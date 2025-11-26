@@ -13,14 +13,22 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
   from_port         = 22
   ip_protocol       = "tcp"
   to_port           = 22
+  description = "allow_port_22"
 }
 
-resource "aws_vpc_security_group_egress_rule" "allow_all" {
+resource "aws_vpc_security_group_ingress_rule" "allow_app_port" {
   security_group_id = aws_security_group.tool.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = var.port
   ip_protocol       = "tcp"
   to_port           = var.port
+  depends_on = "${var.tag_name}_vault_app_port"
+}
+
+resource "aws_vpc_security_group_egress_rule" "egress_allow_all_traffic" {
+  security_group_id = aws_security_group.tool.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1"
 }
 
 resource "aws_instance" "tool" {
