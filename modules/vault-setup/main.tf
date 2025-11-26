@@ -13,7 +13,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
   from_port         = 22
   ip_protocol       = "tcp"
   to_port           = 22
-  description = "allow_port_22"
+  description       = "allow_port_22"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_app_port" {
@@ -22,7 +22,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_app_port" {
   from_port         = var.port
   ip_protocol       = "tcp"
   to_port           = var.port
-  depends_on = "${var.tag_name}_vault_app_port"
+  description       = "${var.tag_name}_vault_app_port"
 }
 
 resource "aws_vpc_security_group_egress_rule" "egress_allow_all_traffic" {
