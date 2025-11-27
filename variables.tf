@@ -4,7 +4,6 @@ variable "ami_id" {
 
 variable "tools" {
   default = {
-
     vault={
       instance_type = "t3.small"
       port = 8200
