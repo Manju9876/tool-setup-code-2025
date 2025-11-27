@@ -7,7 +7,8 @@ variable "tools" {
     vault={
       instance_type = "t3.small"
       port = 8200
-      zone_id = "Z02811011NU5NZAZHXN3J"
+      zone_id = "Z0739029GOTW9PY9KD3W"
     }
   }
 }
+
