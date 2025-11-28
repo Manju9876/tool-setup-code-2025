@@ -46,10 +46,6 @@ resource "aws_instance" "tool" {
   tags = {
     Name = var.tag_name
   }
-  instance_tags = {
-    Name = var.tag_name
-    }
-  }
 }
 
 resource "aws_route53_record" "private" {
