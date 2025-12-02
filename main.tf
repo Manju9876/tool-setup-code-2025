@@ -16,3 +16,4 @@ module "vault-setup" {
   tag_name      = each.key
   zone_id       = each.value["zone_id"]
 }
+
