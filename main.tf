@@ -6,7 +6,7 @@ terraform {
   }
 }
 
-module "vault-setup" {
+module "vault" {
   for_each = var.tools
   source = "modules/vault"
 
