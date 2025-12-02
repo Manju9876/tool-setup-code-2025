@@ -8,7 +8,7 @@ terraform {
 
 module "vault" {
   for_each = var.tools
-  source = "modules/vault"
+  source = "./modules/vault"
 
   ami_id        = var.ami_id
   instance_type = each.value["instance_type"]
