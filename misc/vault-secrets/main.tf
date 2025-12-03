@@ -24,6 +24,7 @@ resource "vault_generic_secret" "example" {
 EOT
 }
 
+
 # resource "vault_mount" "roboshop-dev" {
 #   path        = "roboshop-dev-secrets"
 #   type        = "kv"
