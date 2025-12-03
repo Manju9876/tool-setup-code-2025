@@ -24,20 +24,20 @@ resource "vault_generic_secret" "example" {
 EOT
 }
 
-resource "vault_mount" "roboshop-dev" {
-  path        = "roboshop-dev-secrets"
-  type        = "kv"
-  options     = { version = "2" }
-  description = "roboshop dev secrets"
-}
-
-resource "vault_generic_secret" "roboshop_secrets" {
-  path = "${vault_mount.roboshop-dev.path}/cart"
-
-  data_json = <<EOT
-{
-  "username": "ec2-user",
-  "password": "DevOps321"
-}
-EOT
-}
+# resource "vault_mount" "roboshop-dev" {
+#   path        = "roboshop-dev-secrets"
+#   type        = "kv"
+#   options     = { version = "2" }
+#   description = "roboshop dev secrets"
+# }
+#
+# resource "vault_generic_secret" "roboshop_secrets" {
+#   path = "${vault_mount.roboshop-dev.path}/cart"
+#
+#   data_json = <<EOT
+# {
+#   "username": "ec2-user",
+#   "password": "DevOps321"
+# }
+# EOT
+# }
