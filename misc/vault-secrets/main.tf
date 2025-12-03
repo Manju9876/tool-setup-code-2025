@@ -24,14 +24,15 @@ resource "vault_generic_secret" "example" {
 EOT
 }
 
-# resource "vault_mount" "" {
-#   path        = "kvv2"
-#   type        = "kv"
-#   options     = { version = "2" }
-#   description = "KV Version 2 secret engine mount"
-# }
+resource "vault_mount" "roboshop-dev" {
+  path        = "roboshop-dev-secrets"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "roboshop dev secrets"
+}
+
 resource "vault_generic_secret" "roboshop_secrets" {
-  path = "roboshop-dev-secrets/cart"
+  path = "${vault_mount.roboshop-dev.path}/cart"
 
   data_json = <<EOT
 {
