@@ -34,7 +34,7 @@ resource "vault_generic_secret" "roboshop_secrets" {
 {
   "REDIS_HOST": "redis-dev.devopsbymanju.shop",
   "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
-  "CATALOGUE_HOST": "8080"
+  "CATALOGUE_PORT": "8080"
 }
 EOT
 }
