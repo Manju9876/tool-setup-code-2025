@@ -17,7 +17,7 @@ resource "vault_generic_secret" "example" {
 
   data_json = <<EOT
 {
-  "username":   "ec2-user",
+  "username": "ec2-user",
   "password": "DevOps321"
 }
 EOT
