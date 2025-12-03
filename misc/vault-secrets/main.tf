@@ -26,6 +26,16 @@ resource "vault_mount" "roboshop-dev" {
   description = "roboshop dev secrets"
 }
 
+resource "vault_generic_secret" "infra_access" {
+  path = "${vault_mount.infra_access.path}/ssh"
+
+  data_json = <<EOT
+{
+  "username": "ec2-user",
+  "password": "DevOps321"
+}
+EOT
+}
 
 resource "vault_generic_secret" "roboshop_secrets" {
   path = "${vault_mount.roboshop-dev.path}/cart"
@@ -39,13 +49,3 @@ resource "vault_generic_secret" "roboshop_secrets" {
 EOT
 }
 
-resource "vault_generic_secret" "infra_access" {
-  path = "${vault_mount.infra_access.path}/ssh"
-
-  data_json = <<EOT
-{
-  "username": "ec2-user",
-  "password": "DevOps321"
-}
-EOT
-}
