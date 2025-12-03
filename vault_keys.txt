@@ -1,9 +1,0 @@
-
-  "keys": [
-    "7cce292eedf58555230d2679b129db4a512e01348867ec27463bcbc5d0430e44"
-  ],
-  "keys_base64": [
-    "fM4pLu31hVUjDSZ5sSnbSlEuATSIZ+wnRjvLxdBDDkQ="
-  ],
-  "root_token": "hvs.DNzr0pK8Wk7RrFn5G9qwY4l8"
-
