@@ -13,8 +13,8 @@ provider "vault" {
 
 variable "vault_token" {}
 
-resource "vault_generic_secret" "example" {
-  path = "infra/ssh"
+resource "vault_generic_secret" "infra_access" {
+  path = "${vault_mount.infra_access.path}/ssh"
 
   data_json = <<EOT
 {
@@ -24,14 +24,21 @@ resource "vault_generic_secret" "example" {
 EOT
 }
 
+resource "vault_mount" "infra_access" {
+  path        = "infra"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "roboshop dev secrets"
+}
 
-# resource "vault_mount" "roboshop-dev" {
-#   path        = "roboshop-dev-secrets"
-#   type        = "kv"
-#   options     = { version = "2" }
-#   description = "roboshop dev secrets"
-# }
-#
+
+resource "vault_mount" "roboshop-dev" {
+  path        = "roboshop-dev-secrets"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "roboshop dev secrets"
+}
+
 # resource "vault_generic_secret" "roboshop_secrets" {
 #   path = "${vault_mount.roboshop-dev.path}/cart"
 #
