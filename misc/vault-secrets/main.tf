@@ -12,7 +12,6 @@ terraform {
   }
 }
 
-
 resource "vault_mount" "infra_access" {
   path        = "infra"
   type        = "kv"
