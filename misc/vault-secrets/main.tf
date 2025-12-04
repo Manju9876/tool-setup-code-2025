@@ -6,10 +6,6 @@ terraform {
   }
 }
 
-provider "vault" {
-  address = "http://44.222.105.0:8200"
-  token = var.vault_token
-}
 
 resource "vault_mount" "infra_access" {
   path        = "infra"
