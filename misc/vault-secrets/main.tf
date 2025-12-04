@@ -18,14 +18,6 @@ resource "vault_mount" "infra_access" {
   description = "roboshop dev secrets"
 }
 
-
-resource "vault_mount" "roboshop-dev" {
-  path        = "roboshop-dev-secrets"
-  type        = "kv"
-  options     = { version = "2" }
-  description = "roboshop dev secrets"
-}
-
 resource "vault_generic_secret" "infra_access" {
   path = "${vault_mount.infra_access.path}/ssh"
 
@@ -37,14 +29,22 @@ resource "vault_generic_secret" "infra_access" {
 EOT
 }
 
+
+resource "vault_mount" "roboshop-dev" {
+  path        = "roboshop-dev-secrets"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "roboshop dev secrets"
+}
+
+
+
 resource "vault_generic_secret" "roboshop_secrets" {
-  path = "${vault_mount.roboshop-dev.path}/cart"
+  path = "${vault_mount.roboshop-dev.path}/catalogue"
 
   data_json = <<EOT
 {
-  "REDIS_HOST": "redis-dev.devopsbymanju.shop",
-  "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
-  "CATALOGUE_PORT": "8080"
+  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue"
 }
 EOT
 }
