@@ -1,8 +1,14 @@
 terraform {
   backend "s3" {
-    bucket       = "terraform-demo-2025"
-    key          = "vault-secrets/state"
-    region       = "us-east-1"
+    bucket = "terraform-demo-2025"
+    key    = "vault-secrets/state"
+    region = "us-east-1"
+  }
+  required_providers {
+    vault = {
+      source  = "hashicorp/vault"
+      version = "5.0.0"
+    }
   }
 }
 
@@ -12,6 +18,20 @@ resource "vault_mount" "infra_access" {
   type        = "kv"
   options     = { version = "2" }
   description = "roboshop dev secrets"
+}
+
+resource "vault_mount" "roboshop-dev" {
+  path        = "roboshop-dev-secrets"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "roboshop dev secrets"
+}
+
+resource "vault_mount" "rabbitmq_credentails" {
+  path = "rabbitmq_credentails"
+  type = "kv"
+  options = { version = "2" }
+  description = "rabbitmq credentials"
 }
 
 resource "vault_generic_secret" "infra_access" {
@@ -25,16 +45,6 @@ resource "vault_generic_secret" "infra_access" {
 EOT
 }
 
-
-resource "vault_mount" "roboshop-dev" {
-  path        = "roboshop-dev-secrets"
-  type        = "kv"
-  options     = { version = "2" }
-  description = "roboshop dev secrets"
-}
-
-
-
 resource "vault_generic_secret" "roboshop_secrets" {
   path = "${vault_mount.roboshop-dev.path}/catalogue"
 
@@ -45,3 +55,22 @@ resource "vault_generic_secret" "roboshop_secrets" {
 EOT
 }
 
+resource "vault_generic_secret" "roboshop_secrets" {
+  path = "${vault_mount.roboshop-dev.path}/dispatch"
+
+  data_json = <<EOT
+{
+  "AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop"
+}
+EOT
+}
+
+resource "vault_generic_secret" "rabbitmq_credentials" {
+  path = "${vault_mount.rabbitmq_credentails.path}/rabbitmq_credentails"
+  data_json = <<EOF
+{
+"AMQP_USER": roboshop
+"AMQP_PASS": roboshop123
+}
+EOF
+}
