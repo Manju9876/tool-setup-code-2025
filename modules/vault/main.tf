@@ -43,12 +43,7 @@ resource "aws_instance" "tool" {
       instance_interruption_behavior = "stop"
       spot_instance_type = "persistent"
 
-      tags = {
-        Name = var.tag_name
-      }
-
     }
-
   }
   tags = {
     Name = var.tag_name
