@@ -4,12 +4,6 @@ terraform {
     key    = "vault-secrets/state"
     region = "us-east-1"
   }
-  required_providers {
-    vault = {
-      source  = "hashicorp/vault"
-      version = "5.0.0"
-    }
-  }
 }
 
 resource "vault_mount" "infra_access" {
