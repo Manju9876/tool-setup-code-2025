@@ -1,4 +1,4 @@
 provider "vault" {
-  address = "http://44.192.72.161:8200"
+  address = "http://100.28.226.211:8200"
   token = var.vault_token
 }
