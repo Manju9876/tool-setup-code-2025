@@ -38,7 +38,7 @@ resource "vault_generic_secret" "infra_access" {
 EOT
 }
 
-resource "vault_generic_secret" "roboshop_secrets" {
+resource "vault_generic_secret" "cart" {
   path = "${vault_mount.roboshop-dev.path}/cart"
 
   data_json = <<EOF
@@ -50,7 +50,7 @@ resource "vault_generic_secret" "roboshop_secrets" {
 EOF
 }
 
-resource "vault_generic_secret" "roboshop_secrets" {
+resource "vault_generic_secret" "catalogue" {
   path = "${vault_mount.roboshop-dev.path}/catalogue"
 
   data_json = <<EOT
