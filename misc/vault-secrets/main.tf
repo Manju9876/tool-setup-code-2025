@@ -49,17 +49,17 @@ resource "vault_generic_secret" "roboshop_secrets" {
 }
 EOF
 }
-#
-# resource "vault_generic_secret" "roboshop_secrets" {
-#   path = "${vault_mount.roboshop-dev.path}/catalogue"
-#
-#   data_json = <<EOT
-# {
-#   "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue"
-# }
-# EOT
-# }
-#
+
+resource "vault_generic_secret" "roboshop_secrets" {
+  path = "${vault_mount.roboshop-dev.path}/catalogue"
+
+  data_json = <<EOT
+{
+  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue"
+}
+EOT
+}
+
 # resource "vault_generic_secret" "roboshop_secrets" {
 #   path = "${vault_mount.roboshop-dev.path}/dispatch"
 #
