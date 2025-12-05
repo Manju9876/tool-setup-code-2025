@@ -55,7 +55,7 @@ resource "vault_generic_secret" "catalogue" {
 
   data_json = <<EOT
 {
-  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue"
+  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue",
   "REDIS_HOST": "redis-dev.devopsbymanju.shop",
   "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
   "CATALOGUE_PORT": "8080"
