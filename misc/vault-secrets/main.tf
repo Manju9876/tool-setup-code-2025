@@ -26,12 +26,12 @@ resource "vault_mount" "roboshop-dev" {
   description = "roboshop dev secrets"
 }
 
-resource "vault_mount" "rabbitmq_credentails" {
-  path = "rabbitmq_credentails"
-  type = "kv"
-  options = { version = "2" }
-  description = "rabbitmq credentials"
-}
+# resource "vault_mount" "rabbitmq_credentails" {
+#   path = "rabbitmq_credentails"
+#   type = "kv"
+#   options = { version = "2" }
+#   description = "rabbitmq credentials"
+# }
 
 resource "vault_generic_secret" "infra_access" {
   path = "${vault_mount.infra_access.path}/ssh"
@@ -42,6 +42,18 @@ resource "vault_generic_secret" "infra_access" {
   "password": "DevOps321"
 }
 EOT
+}
+
+resource "vault_generic_secret" "roboshop_secrets" {
+  path = "${vault_mount.roboshop-dev.path}/cart"
+
+  data_json = <<EOF
+{
+  "REDIS_HOST": redis-dev.devopsbymanju.shop
+  "CATALOGUE_HOST": catalogue-dev.devopsbymanju.shop
+  "CATALOGUE_PORT": 8080
+}
+EOF
 }
 
 resource "vault_generic_secret" "roboshop_secrets" {
@@ -64,12 +76,12 @@ resource "vault_generic_secret" "roboshop_secrets" {
 EOT
 }
 
-resource "vault_generic_secret" "rabbitmq_credentials" {
-  path = "${vault_mount.rabbitmq_credentails.path}/rabbitmq_credentails"
-  data_json = <<EOF
-{
-"AMQP_USER": roboshop
-"AMQP_PASS": roboshop123
-}
-EOF
-}
+# resource "vault_generic_secret" "rabbitmq_credentials" {
+#   path = "${vault_mount.rabbitmq_credentails.path}/rabbitmq_credentails"
+#   data_json = <<EOF
+# {
+# "AMQP_USER": roboshop
+# "AMQP_PASS": roboshop123
+# }
+# EOF
+# }
