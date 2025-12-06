@@ -10,7 +10,7 @@ resource "vault_mount" "infra_access" {
   path        = "infra"
   type        = "kv"
   options     = { version = "2" }
-  description = "roboshop dev secrets"
+  description = "ec2 instance infra access"
 }
 
 resource "vault_mount" "roboshop-dev" {
