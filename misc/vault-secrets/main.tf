@@ -4,6 +4,12 @@ terraform {
     key    = "vault-secrets/state"
     region = "us-east-1"
   }
+  required_providers {
+    vault = {
+      source  = "hashicorp/vault"
+      version = "5.0.0"
+    }
+  }
 }
 
 resource "vault_mount" "infra_access" {
@@ -58,6 +64,27 @@ resource "vault_generic_secret" "catalogue" {
   "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue"
 }
 EOT
+}
+
+resource "vault_generic_secret" "user" {
+  path = "${vault_mount.roboshop-dev.path}/user"
+
+  data_json = <<EOF
+{
+ "REDIS_URL"="redis://redis-dev.devopsbymanju.shop:6379"
+ "MONGO_URL"="mongodb://mongodb-dev.devopsbymanju.shop:27017/users"
+}
+EOF
+}
+resource "vault_generic_secret" "shipping" {
+  path = "${vault_mount.roboshop-dev.path}/shipping"
+
+  data_json = <<EOF
+{
+ "CART_ENDPOINT="cart-dev.devopsbymanju.shop:8080"
+ "DB_HOST="mysql-dev.devopsbymanju.shop"
+}
+EOF
 }
 
 # resource "vault_generic_secret" "roboshop_secrets" {
