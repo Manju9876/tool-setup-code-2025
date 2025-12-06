@@ -71,8 +71,8 @@ resource "vault_generic_secret" "user" {
 
   data_json = <<EOF
 {
- "REDIS_URL"="redis://redis-dev.devopsbymanju.shop:6379"
- "MONGO_URL"="mongodb://mongodb-dev.devopsbymanju.shop:27017/users"
+ "REDIS_URL": "redis://redis-dev.devopsbymanju.shop:6379"
+ "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/users"
 }
 EOF
 }
@@ -81,8 +81,8 @@ resource "vault_generic_secret" "shipping" {
 
   data_json = <<EOF
 {
- "CART_ENDPOINT="cart-dev.devopsbymanju.shop:8080"
- "DB_HOST="mysql-dev.devopsbymanju.shop"
+ "CART_ENDPOINT": "cart-dev.devopsbymanju.shop:8080"
+ "DB_HOST": "mysql-dev.devopsbymanju.shop"
 }
 EOF
 }
