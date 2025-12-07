@@ -87,15 +87,19 @@ resource "vault_generic_secret" "shipping" {
 EOF
 }
 
-# resource "vault_generic_secret" "roboshop_secrets" {
-#   path = "${vault_mount.roboshop-dev.path}/dispatch"
-#
-#   data_json = <<EOT
-# {
-#   "AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop"
-# }
-# EOT
-# }
+resource "vault_generic_secret" "payment" {
+  path = "${vault_mount.roboshop-dev.path}/payment"
+
+  data_json = <<EOT
+{
+  "AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop"
+  "CART_HOST": "cart-dev.devopsbymanju.shop"
+  "CART_PORT": "8080"
+  "USER_HOST": "user-dev.devopsbymanju.shop"
+  "USER_PORT": "8080"
+}
+EOT
+}
 
 # resource "vault_generic_secret" "rabbitmq_credentials" {
 #   path = "${vault_mount.rabbitmq_credentails.path}/rabbitmq_credentails"
