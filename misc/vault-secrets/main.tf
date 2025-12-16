@@ -101,12 +101,14 @@ resource "vault_generic_secret" "payment" {
 EOT
 }
 
-# resource "vault_generic_secret" "rabbitmq_credentials" {
-#   path = "${vault_mount.rabbitmq_credentails.path}/rabbitmq_credentails"
-#   data_json = <<EOF
-# {
-# "AMQP_USER": roboshop
-# "AMQP_PASS": roboshop123
-# }
-# EOF
-# }
+resource "vault_generic_secret" "dispatch" {
+  path = "${vault_mount.roboshop-dev.path}/dispatch"
+
+  data_json = <<EOF
+{
+"AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop",
+"AMQP_USER": roboshop
+"AMQP_PASS": roboshop123
+}
+EOF
+}
