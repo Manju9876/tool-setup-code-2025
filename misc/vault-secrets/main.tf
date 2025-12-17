@@ -26,6 +26,13 @@ resource "vault_mount" "roboshop-dev" {
   description = "roboshop dev secrets"
 }
 
+resource "vault_mount" "expense-dev" {
+  path        = "expense-dev-secrets"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "expense dev secrets"
+}
+
 # resource "vault_mount" "rabbitmq_credentails" {
 #   path = "rabbitmq_credentails"
 #   type = "kv"
@@ -109,6 +116,16 @@ resource "vault_generic_secret" "dispatch" {
 "AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop",
 "AMQP_USER": "roboshop",
 "AMQP_PASS": "roboshop123"
+}
+EOF
+}
+
+resource "vault_generic_secret" "backend" {
+  path = "${vault_mount.expense-dev.path}/backend"
+
+  data_json = <<EOF
+{
+"DB_HOST": "mysql-dev.devopsbymanju.shop"
 }
 EOF
 }
