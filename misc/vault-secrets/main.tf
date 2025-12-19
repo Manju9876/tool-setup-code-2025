@@ -33,13 +33,6 @@ resource "vault_mount" "expense-dev" {
   description = "expense dev secrets"
 }
 
-# resource "vault_mount" "rabbitmq_credentails" {
-#   path = "rabbitmq_credentails"
-#   type = "kv"
-#   options = { version = "2" }
-#   description = "rabbitmq credentials"
-# }
-
 resource "vault_generic_secret" "infra_access" {
   path = "${vault_mount.infra_access.path}/ssh"
 
@@ -122,6 +115,17 @@ EOF
 
 resource "vault_generic_secret" "backend" {
   path = "${vault_mount.expense-dev.path}/backend"
+
+  data_json = <<EOF
+{
+"DB_HOST": "mysql-dev.devopsbymanju.shop"
+}
+EOF
+}
+
+
+resource "vault_generic_secret" "frontend" {
+  path = "${vault_mount.roboshop-dev.path}/frontend"
 
   data_json = <<EOF
 {
