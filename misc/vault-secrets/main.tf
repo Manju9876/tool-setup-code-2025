@@ -124,16 +124,30 @@ EOF
 }
 
 
+# resource "vault_generic_secret" "frontend" {
+#   path = "${vault_mount.roboshop-dev.path}/frontend"
+#
+#   data_json = <<EOF
+# {
+# "catalogue": "\\{ proxy_pass http://catalogue-dev.devopsbymanju.shop:8080/; \\}",
+# "user": "\\{ proxy_pass http://user-dev.devopsbymanju.shop:8080/; \\}",
+# "cart": "\\{ proxy_pass http://cart-dev.devopsbymanju.shop:8080/; \\}",
+# "shipping": "\\{ proxy_pass http://shipping-dev.devopsbymanju.shop:8080/; \\}",
+# "payment": "\\{ proxy_pass http://payment-dev.devopsbymanju.shop:8080/; \\}",
+# }
+# EOF
+# }
+
 resource "vault_generic_secret" "frontend" {
   path = "${vault_mount.roboshop-dev.path}/frontend"
 
   data_json = <<EOF
 {
-"catalogue": "\\{ proxy_pass http://catalogue-dev.devopsbymanju.shop:8080/; \\}",
-"user": "\\{ proxy_pass http://user-dev.devopsbymanju.shop:8080/; \\}",
-"cart": "\\{ proxy_pass http://cart-dev.devopsbymanju.shop:8080/; \\}",
-"shipping": "\\{ proxy_pass http://shipping-dev.devopsbymanju.shop:8080/; \\}",
-"payment": "\\{ proxy_pass http://payment-dev.devopsbymanju.shop:8080/; \\}",
+  "catalogue": "\\{ proxy_pass http://catalogue-dev.devopsbymanju.shop:8080/; \\}",
+  "user": "\\{ proxy_pass http://user-dev.devopsbymanju.shop:8080/; \\}",
+  "cart": "\\{ proxy_pass http://cart-dev.devopsbymanju.shop:8080/; \\}",
+  "shipping": "\\{ proxy_pass http://shipping-dev.devopsbymanju.shop:8080/; \\}",
+  "payment": "\\{ proxy_pass http://payment-dev.devopsbymanju.shop:8080/; \\}"
 }
 EOF
 }
