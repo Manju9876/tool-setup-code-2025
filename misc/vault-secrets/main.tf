@@ -129,7 +129,12 @@ resource "vault_generic_secret" "frontend" {
 
   data_json = <<EOF
 {
-"DB_HOST": "mysql-dev.devopsbymanju.shop"
+location /api/catalogue/ { proxy_pass http://localhost:8080/; }
+"catalogue": "catalogue-dev.devopsbymanju.shop",
+"user": "user-dev.devopsbymanju.shop",
+"cart": "cart-dev.devopsbymanju.shop",
+"shipping": "shipping-dev.devopsbymanju.shop",
+"payment": "payment-dev.devopsbymanju.shop"
 }
 EOF
 }
