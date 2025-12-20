@@ -129,12 +129,11 @@ resource "vault_generic_secret" "frontend" {
 
   data_json = <<EOF
 {
-location /api/catalogue/ { proxy_pass http://localhost:8080/; }
-"catalogue": "catalogue-dev.devopsbymanju.shop",
-"user": "user-dev.devopsbymanju.shop",
-"cart": "cart-dev.devopsbymanju.shop",
-"shipping": "shipping-dev.devopsbymanju.shop",
-"payment": "payment-dev.devopsbymanju.shop"
+"catalogue": "{ proxy_pass http://catalogue-dev.devopsbymanju.shop:8080/;",
+"user": "{ proxy_pass http://user-dev.devopsbymanju.shop:8080/;",
+"cart": "{ proxy_pass http://cart-dev.devopsbymanju.shop:8080/;",
+"shipping": "{ proxy_pass http://shipping-dev.devopsbymanju.shop:8080/;",
+"payment": "{ proxy_pass http://payment-dev.devopsbymanju.shop:8080/;",
 }
 EOF
 }
