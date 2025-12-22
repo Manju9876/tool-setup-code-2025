@@ -10,6 +10,6 @@ ansible:
 
 secrets:
 	git pull
-	cd misc/vault-secrets
+	cd /misc/vault-secrets
 	terraform init
 	terraform apply -auto-approve -var vault_token=$(vault_token)
