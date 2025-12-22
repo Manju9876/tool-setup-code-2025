@@ -2,7 +2,7 @@ infra:
 	git pull
 	rm -f .terraform/terraform.tfstate
 	terraform init
-	terraform apply -auto-approve -var vault_token=$(vault_token)
+	terraform apply -auto-approve
 
 ansible:
 	git pull
@@ -10,6 +10,6 @@ ansible:
 
 secrets:
 	git pull
-	cd misc/vault-secrets
+	cd ~/tool-setup-code-2025/misc/vault-secrets
 	terraform init
 	terraform apply -auto-approve -var vault_token=$(vault_token)
