@@ -1,10 +1,10 @@
-# terraform {
-#   backend "s3" {
-#     bucket       = "terraform-demo-2025"
-#     key          = "tools/state"
-#     region       = "us-east-1"
-#   }
-# }
+terraform {
+  backend "s3" {
+    bucket       = "terraform-demo-2025"
+    key          = "tools/state"
+    region       = "us-east-1"
+  }
+}
 
 module "vault" {
   for_each = var.tools
