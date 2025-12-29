@@ -13,3 +13,4 @@ secrets:
 	cd ~/tool-setup-code-2025/misc/vault-secrets && \
 	terraform init && \
 	terraform apply -auto-approve -var vault_token=$(vault_token)
+
