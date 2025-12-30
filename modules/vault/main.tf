@@ -44,11 +44,10 @@ resource "aws_instance" "tool" {
   #     spot_instance_type = "persistent"
   #
   #   }
-  }
+  #}
   tags = {
     Name = var.tag_name
   }
-
 }
 
 resource "aws_route53_record" "private" {
