@@ -1,14 +1,12 @@
 {
-    "keys": [
-      "336f6225e0a356c68214197366c9991069fbf5662c25c23818ec4a2e1a828f88"
-    ],
-    "keys_base64": [
-      "M29iJeCjVsaCFBlzZsmZEGn79WYsJcI4GOxKLhqCj4g="
-    ],
-    "root_token": "hvs.BIlPkS0K8s1jWjd7kcJzUn1b"
-    ]
-    "github_access_token": [
-      "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"
-    ]
+  "keys": [
+    "f9e54a337fe957185010f6f61d308cc75f1bc100b577c952c08de7ddf57ef885"
+  ],
+  "keys_base64": [
+    "+eVKM3/pVxhQEPb2HTCMx18bwQC1d8lSwI3n3fV++IU="
+  ],
+  "root_token": "hvs.PtwpE7WQcAjjhAL1pUoNOTmP"
+  ]
+  "github_token": "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"
+  ]
 }
-
