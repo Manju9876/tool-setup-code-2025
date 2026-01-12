@@ -131,10 +131,10 @@ resource "vault_generic_secret" "frontend" {
   data_json = <<EOF
 {
   "catalogue": "http://catalogue-dev.devopsbymanju.shop:8080/;",
-  "user": "http://user-dev.devopsbymanju.shop:8080/;",
-  "cart": "http://cart-dev.devopsbymanju.shop:8080/;",
-  "shipping": "http://shipping-dev.devopsbymanju.shop:8080/;",
-  "payment": "http://payment-dev.devopsbymanju.shop:8080/;"
+  # "user": "http://user-dev.devopsbymanju.shop:8080/;",
+  # "cart": "http://cart-dev.devopsbymanju.shop:8080/;",
+  # "shipping": "http://shipping-dev.devopsbymanju.shop:8080/;",
+  # "payment": "http://payment-dev.devopsbymanju.shop:8080/;"
 }
 EOF
 }
