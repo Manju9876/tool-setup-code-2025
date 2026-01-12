@@ -65,3 +65,4 @@ resource "aws_route53_record" "public" {
   ttl     = 30
   records = [aws_instance.tool.public_ip]
 }
+
