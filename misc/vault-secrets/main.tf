@@ -130,8 +130,7 @@ resource "vault_generic_secret" "frontend" {
 
   data_json = <<EOF
 {
-  "catalogue": "http://catalogue-dev.devopsbymanju.shop:8080/;",
-
+  "catalogue": "http://catalogue-dev.devopsbymanju.shop:8080/;"
 }
 EOF
 }
