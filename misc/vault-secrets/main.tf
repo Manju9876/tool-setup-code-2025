@@ -101,6 +101,7 @@ resource "vault_generic_secret" "payment" {
 EOT
 }
 
+
 resource "vault_generic_secret" "dispatch" {
   path = "${vault_mount.roboshop-dev.path}/dispatch"
 
