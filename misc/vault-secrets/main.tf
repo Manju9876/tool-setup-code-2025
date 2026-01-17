@@ -26,6 +26,13 @@ resource "vault_mount" "roboshop-dev" {
   description = "roboshop dev secrets"
 }
 
+resource "vault_mount" "roboshop-dev-docker" {
+  path        = "roboshop-dev-docker-secrets"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "roboshop dev secrets"
+}
+
 resource "vault_mount" "expense-dev" {
   path        = "expense-dev-secrets"
   type        = "kv"
