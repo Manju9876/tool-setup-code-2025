@@ -148,7 +148,7 @@ EOF
 # "payment": "http://payment-dev.devopsbymanju.shop:8080/;"
 
 resource "vault_generic_secret" "frontend-docker" {
-  path = "${vault_mount.roboshop-dev-docker}/frontend-docker"
+  path = "${vault_mount.roboshop-dev-docker.path}/frontend-docker"
 
   data_json = <<EOF
 {
