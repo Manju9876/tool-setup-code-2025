@@ -142,6 +142,16 @@ resource "vault_generic_secret" "frontend" {
   "cart": "http://cart-dev.devopsbymanju.shop:8080/;",
   "shipping": "http://shipping-dev.devopsbymanju.shop:8080/;",
   "payment": "http://payment-dev.devopsbymanju.shop:8080/;"
+  "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
+  "CATALOGUE_PORT": "8080",
+  "USER_HOST": "user-dev.devopsbymanju.shop",
+  "USER_PORT": "8080",
+  "CART_HOST": "cart-dev.devopsbymanju.shop",
+  "CART_PORT": "8080",
+  "SHIPPING_HOST": "shipping-dev.devopsbymanju.shop",
+  "SHIPPING_PORT": "8080",
+  "PAYMENT_HOST": "payment-dev.devopsbymanju.shop",
+  "PAYMENT_PORT": "8080"
 }
 EOF
 }
