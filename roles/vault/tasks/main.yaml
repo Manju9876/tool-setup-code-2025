@@ -6,6 +6,17 @@
 #    name: yum-utils
 #    state: installed
 
+
+##Recomended to enble epel first
+#- name: Install basic utilities
+#  ansible.builtin.dnf:
+#    name:
+#      - unzip
+#      - curl
+#      - jq
+#    state: installed
+
+
 - name: Download hashicorp repo file
   ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
