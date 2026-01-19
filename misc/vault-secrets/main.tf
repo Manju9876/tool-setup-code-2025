@@ -68,10 +68,14 @@ resource "vault_generic_secret" "catalogue" {
 
   data_json = <<EOT
 {
-  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue"
+  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue",
+  "MONGO": "true",
+  "DOCKER_MONGO_URL": "mongodb://mongo-ip:27017/catalogue"
 }
 EOT
 }
+
+-e MONGO=true -e MONGO_URL="mongodb://mongo-ip:27017/catalogue
 
 resource "vault_generic_secret" "user" {
   path = "${vault_mount.roboshop-dev.path}/user"
