@@ -63,6 +63,7 @@ resource "vault_generic_secret" "cart" {
 EOF
 }
 
+
 resource "vault_generic_secret" "catalogue" {
   path = "${vault_mount.roboshop-dev.path}/catalogue"
 
