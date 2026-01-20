@@ -87,11 +87,10 @@ resource "vault_generic_secret" "user" {
 {
  "REDIS_URL": "redis://redis-dev.devopsbymanju.shop:6379",
  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/users"
+ "MONGO": "true"
 }
 EOF
 }
-
--e MONGO=true -e MONGO_URL="mongodb://mongo-ip:27017/users" -e REDIS_URL="redis://redis-ip:6379"
 
 resource "vault_generic_secret" "shipping" {
   path = "${vault_mount.roboshop-dev.path}/shipping"
