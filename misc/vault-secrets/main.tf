@@ -70,12 +70,15 @@ resource "vault_generic_secret" "catalogue" {
 {
   "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue",
   "MONGO": "true",
-  "MONGO_URL": "mongodb://mongo-ip:27017/catalogue"
+  "DB_TYPE": "mongo"
+  "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/catalogue",
+  "DB_HOST": "mongodb-dev.devopsbymanju.shop",
+  "SCHEMA_FILE": "db/master-data.js"
 }
 EOT
 }
 
--e MONGO=true -e MONGO_URL="mongodb://mongo-ip:27017/catalogue
+
 
 resource "vault_generic_secret" "user" {
   path = "${vault_mount.roboshop-dev.path}/user"
@@ -87,6 +90,9 @@ resource "vault_generic_secret" "user" {
 }
 EOF
 }
+
+-e MONGO=true -e MONGO_URL="mongodb://mongo-ip:27017/users" -e REDIS_URL="redis://redis-ip:6379"
+
 resource "vault_generic_secret" "shipping" {
   path = "${vault_mount.roboshop-dev.path}/shipping"
 
@@ -161,23 +167,23 @@ EOF
 }
 
 
-
-resource "vault_generic_secret" "frontend-docker" {
-  path = "${vault_mount.roboshop-dev-docker.path}/frontend-docker"
-
-  data_json = <<EOF
-{
-  "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
-  "CATALOGUE_PORT": "8080",
-  "USER_HOST": "user-dev.devopsbymanju.shop",
-  "USER_PORT": "8080",
-  "CART_HOST": "cart-dev.devopsbymanju.shop",
-  "CART_PORT": "8080",
-  "SHIPPING_HOST": "shipping-dev.devopsbymanju.shop",
-  "SHIPPING_PORT": "8080",
-  "PAYMENT_HOST": "payment-dev.devopsbymanju.shop",
-  "PAYMENT_PORT": "8080"
-}
-EOF
-}
+#
+# resource "vault_generic_secret" "frontend-docker" {
+#   path = "${vault_mount.roboshop-dev-docker.path}/frontend-docker"
+#
+#   data_json = <<EOF
+# {
+#   "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
+#   "CATALOGUE_PORT": "8080",
+#   "USER_HOST": "user-dev.devopsbymanju.shop",
+#   "USER_PORT": "8080",
+#   "CART_HOST": "cart-dev.devopsbymanju.shop",
+#   "CART_PORT": "8080",
+#   "SHIPPING_HOST": "shipping-dev.devopsbymanju.shop",
+#   "SHIPPING_PORT": "8080",
+#   "PAYMENT_HOST": "payment-dev.devopsbymanju.shop",
+#   "PAYMENT_PORT": "8080"
+# }
+# EOF
+# }
 
