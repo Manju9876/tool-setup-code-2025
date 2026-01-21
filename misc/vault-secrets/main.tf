@@ -149,7 +149,7 @@ resource "vault_generic_secret" "backend" {
 
   data_json = <<EOF
 {
-"DB_HOST": "mysql-dev.devopsbymanju.shop"
+  "DB_HOST": "mysql-dev.devopsbymanju.shop"
 }
 EOF
 }
