@@ -100,6 +100,16 @@ resource "vault_generic_secret" "shipping" {
 {
  "CART_ENDPOINT": "cart-dev.devopsbymanju.shop:8080",
  "DB_HOST": "mysql-dev.devopsbymanju.shop"
+ "DB_TYPE": "mysql",
+ "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/shipping",
+ "DB_USER": "root",
+ "DB_PASS": "RoboShop@1",
+ "SCHEMA_FILE": {
+   "app_user": "db/app-user.sql",
+   "schema": "db/schema.sql",
+   "master_data": "db/master-data.sql",
+ }
+
 }
 EOF
 }
