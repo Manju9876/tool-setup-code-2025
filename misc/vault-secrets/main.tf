@@ -137,9 +137,9 @@ resource "vault_generic_secret" "dispatch" {
 
   data_json = <<EOF
 {
-"AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop",
-"AMQP_USER": "roboshop",
-"AMQP_PASS": "roboshop123"
+  "AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop",
+  "AMQP_USER": "roboshop",
+  "AMQP_PASS": "roboshop123"
 }
 EOF
 }
