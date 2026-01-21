@@ -71,7 +71,7 @@ resource "vault_generic_secret" "catalogue" {
 {
   "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue",
   "MONGO": "true",
-  "DB_TYPE": "mongo"
+  "DB_TYPE": "mongo",
   "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/catalogue",
   "DB_HOST": "mongodb-dev.devopsbymanju.shop",
   "SCHEMA_FILE": "db/master-data.js"
@@ -87,7 +87,7 @@ resource "vault_generic_secret" "user" {
   data_json = <<EOF
 {
  "REDIS_URL": "redis://redis-dev.devopsbymanju.shop:6379",
- "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/users"
+ "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/users",
  "MONGO": "true"
 }
 EOF
@@ -99,7 +99,7 @@ resource "vault_generic_secret" "shipping" {
   data_json = <<EOF
 {
  "CART_ENDPOINT": "cart-dev.devopsbymanju.shop:8080",
- "DB_HOST": "mysql-dev.devopsbymanju.shop"
+ "DB_HOST": "mysql-dev.devopsbymanju.shop",
  "DB_TYPE": "mysql",
  "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/shipping",
  "DB_USER": "root",
