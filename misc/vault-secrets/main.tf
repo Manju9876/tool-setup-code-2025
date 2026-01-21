@@ -107,7 +107,7 @@ resource "vault_generic_secret" "shipping" {
  "SCHEMA_FILE": {
    "app_user": "db/app-user.sql",
    "schema": "db/schema.sql",
-   "master_data": "db/master-data.sql",
+   "master_data": "db/master-data.sql"
  }
 
 }
