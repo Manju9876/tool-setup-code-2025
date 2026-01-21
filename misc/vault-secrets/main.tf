@@ -123,10 +123,13 @@ resource "vault_generic_secret" "payment" {
   "CART_HOST": "cart-dev.devopsbymanju.shop",
   "CART_PORT": "8080",
   "USER_HOST": "user-dev.devopsbymanju.shop",
-  "USER_PORT": "8080"
+  "USER_PORT": "8080",
+  "AMQP_USER": "roboshop",
+  "AMQP_PASS": "roboshop123"
 }
 EOT
 }
+
 
 
 resource "vault_generic_secret" "dispatch" {
