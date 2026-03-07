@@ -56,8 +56,8 @@ resource "vault_generic_secret" "cart" {
 
   data_json = <<EOF
 {
-  "REDIS_HOST": "redis-dev.devopsbymanju.shop",
-  "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
+  "REDIS_HOST": "redis-dev.devopsmanju.shop",
+  "CATALOGUE_HOST": "catalogue-dev.devopsmanju.shop",
   "CATALOGUE_PORT": "8080"
 }
 EOF
@@ -69,11 +69,11 @@ resource "vault_generic_secret" "catalogue" {
 
   data_json = <<EOT
 {
-  "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/catalogue",
+  "MONGO_URL": "mongodb://mongodb-dev.devopsmanju.shop:27017/catalogue",
   "MONGO": "true",
   "DB_TYPE": "mongo",
   "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/catalogue",
-  "DB_HOST": "mongodb-dev.devopsbymanju.shop",
+  "DB_HOST": "mongodb-dev.devopsmanju.shop",
   "SCHEMA_FILE": "db/master-data.js"
 }
 EOT
@@ -86,8 +86,8 @@ resource "vault_generic_secret" "user" {
 
   data_json = <<EOF
 {
- "REDIS_URL": "redis://redis-dev.devopsbymanju.shop:6379",
- "MONGO_URL": "mongodb://mongodb-dev.devopsbymanju.shop:27017/users",
+ "REDIS_URL": "redis://redis-dev.devopsmanju.shop:6379",
+ "MONGO_URL": "mongodb://mongodb-dev.devopsmanju.shop:27017/users",
  "MONGO": "true"
 }
 EOF
@@ -98,8 +98,8 @@ resource "vault_generic_secret" "shipping" {
 
   data_json = <<EOF
 {
- "CART_ENDPOINT": "cart-dev.devopsbymanju.shop:8080",
- "DB_HOST": "mysql-dev.devopsbymanju.shop",
+ "CART_ENDPOINT": "cart-dev.devopsmanju.shop:8080",
+ "DB_HOST": "mysql-dev.devopsmanju.shop",
  "DB_TYPE": "mysql",
  "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/shipping",
  "DB_USER": "root",
@@ -119,10 +119,10 @@ resource "vault_generic_secret" "payment" {
 
   data_json = <<EOT
 {
-  "AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop",
-  "CART_HOST": "cart-dev.devopsbymanju.shop",
+  "AMQP_HOST": "rabbitmq-dev.devopsmanju.shop",
+  "CART_HOST": "cart-dev.devopsmanju.shop",
   "CART_PORT": "8080",
-  "USER_HOST": "user-dev.devopsbymanju.shop",
+  "USER_HOST": "user-dev.devopsmanju.shop",
   "USER_PORT": "8080",
   "AMQP_USER": "roboshop",
   "AMQP_PASS": "roboshop123"
@@ -137,7 +137,7 @@ resource "vault_generic_secret" "dispatch" {
 
   data_json = <<EOF
 {
-  "AMQP_HOST": "rabbitmq-dev.devopsbymanju.shop",
+  "AMQP_HOST": "rabbitmq-dev.devopsmanju.shop",
   "AMQP_USER": "roboshop",
   "AMQP_PASS": "roboshop123"
 }
@@ -149,7 +149,7 @@ resource "vault_generic_secret" "backend" {
 
   data_json = <<EOF
 {
-  "DB_HOST": "mysql-dev.devopsbymanju.shop"
+  "DB_HOST": "mysql-dev.devopsmanju.shop"
 }
 EOF
 }
@@ -160,20 +160,20 @@ resource "vault_generic_secret" "frontend" {
 
   data_json = <<EOF
 {
-  "catalogue": "http://catalogue-dev.devopsbymanju.shop:8080/;",
-  "user": "http://user-dev.devopsbymanju.shop:8080/;",
-  "cart": "http://cart-dev.devopsbymanju.shop:8080/;",
-  "shipping": "http://shipping-dev.devopsbymanju.shop:8080/;",
-  "payment": "http://payment-dev.devopsbymanju.shop:8080/;",
-  "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
+  "catalogue": "http://catalogue-dev.devopsmanju.shop:8080/;",
+  "user": "http://user-dev.devopsmanju.shop:8080/;",
+  "cart": "http://cart-dev.devopsmanju.shop:8080/;",
+  "shipping": "http://shipping-dev.devopsmanju.shop:8080/;",
+  "payment": "http://payment-dev.devopsmanju.shop:8080/;",
+  "CATALOGUE_HOST": "catalogue-dev.devopsmanju.shop",
   "CATALOGUE_PORT": "8080",
-  "USER_HOST": "user-dev.devopsbymanju.shop",
+  "USER_HOST": "user-dev.devopsmanju.shop",
   "USER_PORT": "8080",
-  "CART_HOST": "cart-dev.devopsbymanju.shop",
+  "CART_HOST": "cart-dev.devopsmanju.shop",
   "CART_PORT": "8080",
-  "SHIPPING_HOST": "shipping-dev.devopsbymanju.shop",
+  "SHIPPING_HOST": "shipping-dev.devopsmanju.shop",
   "SHIPPING_PORT": "8080",
-  "PAYMENT_HOST": "payment-dev.devopsbymanju.shop",
+  "PAYMENT_HOST": "payment-dev.devopsmanju.shop",
   "PAYMENT_PORT": "8080"
 }
 EOF
@@ -186,15 +186,15 @@ EOF
 #
 #   data_json = <<EOF
 # {
-#   "CATALOGUE_HOST": "catalogue-dev.devopsbymanju.shop",
+#   "CATALOGUE_HOST": "catalogue-dev.devopsmanju.shop",
 #   "CATALOGUE_PORT": "8080",
-#   "USER_HOST": "user-dev.devopsbymanju.shop",
+#   "USER_HOST": "user-dev.devopsmanju.shop",
 #   "USER_PORT": "8080",
-#   "CART_HOST": "cart-dev.devopsbymanju.shop",
+#   "CART_HOST": "cart-dev.devopsmanju.shop",
 #   "CART_PORT": "8080",
-#   "SHIPPING_HOST": "shipping-dev.devopsbymanju.shop",
+#   "SHIPPING_HOST": "shipping-dev.devopsmanju.shop",
 #   "SHIPPING_PORT": "8080",
-#   "PAYMENT_HOST": "payment-dev.devopsbymanju.shop",
+#   "PAYMENT_HOST": "payment-dev.devopsmanju.shop",
 #   "PAYMENT_PORT": "8080"
 # }
 # EOF
