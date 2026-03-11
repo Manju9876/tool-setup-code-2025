@@ -17,3 +17,14 @@ module "vault" {
   zone_id       = each.value["zone_id"]
 }
 
+module "github-runner" {
+  for_each = var.github-runner
+  source = "./modules/github-runner"
+
+  instance_type = each.value["instance_type"]
+  port          = each.value["port"]
+  tag_name      = each.key
+  zone_id       = each.value["zone_id"]
+  vpc_security_group_ids = each.value["vpc_security_group_ids"]
+}
+
