@@ -40,6 +40,13 @@ resource "vault_mount" "expense-dev" {
   description = "expense dev secrets"
 }
 
+resource "vault_mount" "github-runner" {
+  path = "github-runner"
+  type = "kv"
+  options = {version = "2" }
+  description = "github runner token secrets"
+}
+
 resource "vault_generic_secret" "infra_access" {
   path = "${vault_mount.infra_access.path}/ssh"
 
@@ -179,7 +186,15 @@ resource "vault_generic_secret" "frontend" {
 EOF
 }
 
+resource "vault_generic_secret" "github-runner" {
+  path = "${vault_mount.github-runner}/path"
 
+  data_json = <<EOF
+{
+ "token": "A6ZG75Y2HIKZDRUYGA2NJVTJWLQCG"
+}
+EOF
+}
 #
 # resource "vault_generic_secret" "frontend-docker" {
 #   path = "${vault_mount.roboshop-dev-docker.path}/frontend-docker"
