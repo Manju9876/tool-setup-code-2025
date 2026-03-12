@@ -12,4 +12,10 @@
     group: github
     state: directory
 
-
+- name: Download github runner
+  ansible.builtin.unarchive:
+    src: https://github.com/actions/runner/releases/download/v2.332.0/actions-runner-linux-x64-2.332.0.tar.gz
+    dest: /actions-runner
+    owner: github
+    group: github
+    remote_src: yes
