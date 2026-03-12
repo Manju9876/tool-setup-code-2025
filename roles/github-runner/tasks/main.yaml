@@ -31,7 +31,7 @@
 #  become_user: github
 
 - name: Get GitHub runner token
-  uri:
+  ansible.builtin.uri:
     url: https://api.github.com/repos/manjudevopszone/actions/runners/registration-token
     method: POST
     headers:
