@@ -20,6 +20,11 @@
     group: github
     remote_src: yes
 
+- name: Check github runner already exist or not
+  ansible.builtin.stat:
+    path: /actions-runner/.runner
+  register: runner_stat
+
 - name: Read token from vault
   set_fact:
     github_token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=github-runner/data/path:token token=' ~ vault_token ~ ' url=http://vault.devopsmanju.shop:8200') }} --unattended"
@@ -29,6 +34,7 @@
   args:
     chdir: /actions-runner
   become_user: github
+  when: not runner_stat.stat.exists
 
 - name: run github action runner
   ansible.builtin.shell: ./run.sh
