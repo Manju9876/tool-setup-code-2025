@@ -1,0 +1,13 @@
+[Unit]
+Description=GitHub Actions Runner
+After=network-online.target
+
+[Service]
+ExecStart=/actions-runner/runsvc.sh
+User=github
+WorkingDirectory=/actions-runner
+KillMode=process
+KillSignal=SIGTERM
+TimeoutStopSec=5min
+
+[Install]

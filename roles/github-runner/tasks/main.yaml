@@ -36,11 +36,10 @@
   become_user: github
   when: not runner_stat.stat.exists
 
-#- name: run github action runner
-#  ansible.builtin.shell: ./run.sh
-#  args:
-#    chdir: /actions-runner
-#  become_user: github
+- name: Copy service file
+  ansible.builtin.template:
+    src: github-runner.service
+    dest: /etc/systemd/system/github-runner/service
 
 
 #- name: Configure github runner
