@@ -1,3 +1,4 @@
+[kubernetes]
 name=Kubernetes
 baseurl=https://pkgs.k8s.io/core:/stable:/v1.35/rpm/
 enabled=1

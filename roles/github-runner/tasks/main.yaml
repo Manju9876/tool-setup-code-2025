@@ -1,6 +1,13 @@
 - name: Setup prompt
   ansible.builtin.shell: set-prompt {{ tool_name }}
 
+- name: Check github runner already exist or not
+  ansible.builtin.stat:
+    path: /actions-runner/.runner
+  register: runner_stat
+
+
+
 - name: Create github-runner user
   ansible.builtin.user:
     name: github
@@ -19,11 +26,6 @@
     owner: github
     group: github
     remote_src: yes
-
-- name: Check github runner already exist or not
-  ansible.builtin.stat:
-    path: /actions-runner/.runner
-  register: runner_stat
 
 - name: Read token from vault
   set_fact:
