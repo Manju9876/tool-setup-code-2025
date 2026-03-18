@@ -27,9 +27,6 @@ module "github-runner" {
   tag_name               = each.key
   zone_id                = each.value["zone_id"]
   vpc_security_group_ids = each.value["vpc_security_group_ids"]
-  iam_policy = {
-    Action   = []
-    Resource = []
-  }
+  iam_policy             = each.value["iam_policy"]
 }
 

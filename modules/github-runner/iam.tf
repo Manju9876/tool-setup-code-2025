@@ -31,9 +31,9 @@ resource "aws_iam_policy" "policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = []
+        Action = var.iam_policy["Action"]
         Effect   = "Allow"
-        Resource = ["*"]
+        Resource = var.iam_policy["Resource"]
       },
     ]
   })

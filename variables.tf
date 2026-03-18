@@ -19,6 +19,10 @@ variable "github-runner" {
       zone_id       = "Z08819072319VLT801BHA"
       vpc_security_group_ids = ["sg-043ff9d2da877c20a"]
       port          = 443
+      iam_policy = {
+        Action   = []
+        Resource = []
+      }
     }
   }
 }
