@@ -6,42 +6,43 @@
     path: /actions-runner/.runner
   register: runner_stat
 
-
-
-- name: Create github-runner user
-  ansible.builtin.user:
-    name: github
-
-- name: make github action folder
-  ansible.builtin.file:
-    path: /actions-runner
-    owner: github
-    group: github
-    state: directory
-
-- name: Download github runner
-  ansible.builtin.unarchive:
-    src: https://github.com/actions/runner/releases/download/v2.332.0/actions-runner-linux-x64-2.332.0.tar.gz
-    dest: /actions-runner
-    owner: github
-    group: github
-    remote_src: yes
-
-- name: Read token from vault
-  set_fact:
-    github_token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=github-runner/data/path:token token=' ~ vault_token ~ ' url=http://vault.devopsmanju.shop:8200') }} --unattended"
-
-- name: Create runner and start the configuration
-  ansible.builtin.shell: ./config.sh --url https://github.com/manjudevopszone --token {{ github_token }}
-  args:
-    chdir: /actions-runner
-  become_user: github
+- name: Github action setup
   when: not runner_stat.stat.exists
+  block:
+    - name: Create github-runner user
+      ansible.builtin.user:
+        name: github
 
-- name: Copy service file
-  ansible.builtin.template:
-    src: github-runner.service
-    dest: /etc/systemd/system/github-runner.service
+    - name: make github action folder
+      ansible.builtin.file:
+        path: /actions-runner
+        owner: github
+        group: github
+        state: directory
+
+    - name: Download github runner
+      ansible.builtin.unarchive:
+        src: https://github.com/actions/runner/releases/download/v2.332.0/actions-runner-linux-x64-2.332.0.tar.gz
+        dest: /actions-runner
+        owner: github
+        group: github
+        remote_src: yes
+
+    - name: Read token from vault
+      set_fact:
+        github_token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=github-runner/data/path:token token=' ~ vault_token ~ ' url=http://vault.devopsmanju.shop:8200') }} --unattended"
+
+    - name: Create runner and start the configuration
+      ansible.builtin.shell: ./config.sh --url https://github.com/manjudevopszone --token {{ github_token }}
+      args:
+        chdir: /actions-runner
+      become_user: github
+      when: not runner_stat.stat.exists
+
+    - name: Copy service file
+      ansible.builtin.template:
+        src: github-runner.service
+        dest: /etc/systemd/system/github-runner.service
 
 - name: Start github-runner service
   ansible.builtin.systemd:
@@ -64,7 +65,6 @@
   ansible.builtin.template:
     src: kubernetes.repo
     dest: /etc/yum.repos.d/kubernetes.repo
-
 
 - name: Install Kubectl
   ansible.builtin.dnf:
