@@ -96,6 +96,10 @@
     enabled: yes
     daemon-reload: yes
 
+- name: add github user to docker group
+  ansible.builtin.user:
+    name: github
+    group: docker
 
 
 #- name: Configure github runner
