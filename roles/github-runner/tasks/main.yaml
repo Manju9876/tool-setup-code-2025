@@ -91,7 +91,7 @@
 
 - name: start docker
   ansible.builtin.systemd:
-    name: docker-ce
+    name: docker
     state: started
     enabled: yes
     daemon-reload: yes
